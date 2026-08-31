@@ -1,0 +1,623 @@
+{% style %}
+.u-rctxtniet-section--{{ section.id }}{
+background-color:{{ section.settings.sec_bg_clr }};
+padding-top:{{ section.settings.tp_pd }}px;
+padding-bottom:{{ section.settings.btm_pd }}px;
+}
+.u-rctxtniet-section--{{ section.id }} .u-rctxtniet-badge{
+background-color:{{ section.settings.badge_bg_clr }};
+width:{{ section.settings.badge_sz }}px;
+height:{{ section.settings.badge_sz }}px;
+padding:{{ section.settings.badge_icon_pd }}px;
+margin-bottom:{{ section.settings.badge_m_btm }}px;
+}
+.u-rctxtniet-section--{{ section.id }} .u-rctxtniet-eyebrow{
+color:{{ section.settings.eyebrow_clr }};
+font-size:{{ section.settings.eyebrow_sz }}px;
+margin-top:{{ section.settings.eyebrow_m_tp }}px;
+}
+.u-rctxtniet-section--{{ section.id }} .u-rctxtniet-heading {
+margin-top:{{ section.settings.heading_m_tp }}px;
+}
+.u-rctxtniet-section--{{ section.id }} .u-rctxtniet-heading *{
+color:{{ section.settings.heading_clr }};
+font-size:{{ section.settings.heading_sz }}px;
+}
+.u-rctxtniet-section--{{ section.id }} .u-rctxtniet-desc{
+color:{{ section.settings.desc_clr }};
+font-size:{{ section.settings.desc_sz }}px;
+margin-top:{{ section.settings.desc_m_tp }}px;
+max-width:{{ section.settings.desc_max_w }}px;
+}
+.u-rctxtniet-section--{{ section.id }} .u-rctxtniet-btn{
+background-color:{{ section.settings.btn_bg_clr }};
+color:{{ section.settings.btn_txt_clr }};
+font-size:{{ section.settings.btn_txt_sz }}px;
+padding-top:{{ section.settings.btn_pd_tp }}px;
+padding-bottom:{{ section.settings.btn_pd_btm }}px;
+padding-left:{{ section.settings.btn_pd_lr }}px;
+padding-right:{{ section.settings.btn_pd_lr }}px;
+border-radius:{{ section.settings.btn_radius }}px;
+margin-top:{{ section.settings.btn_m_tp }}px;
+}
+.u-rctxtniet-section--{{ section.id }} .u-rctxtniet-review{
+margin-top:{{ section.settings.review_m_tp }}px;
+}
+.u-rctxtniet-section--{{ section.id }} .u-rctxtniet-review-star{
+width:{{ section.settings.review_star_w }}px;
+}
+.u-rctxtniet-section--{{ section.id }} .u-rctxtniet-review-text{
+color:{{ section.settings.review_txt_clr }};
+font-size:{{ section.settings.review_txt_sz }}px;
+}
+@media(max-width:768px){
+.u-rctxtniet-section--{{ section.id }}{
+padding-top:{{ section.settings.tp_pd_mob }}px;
+padding-bottom:{{ section.settings.btm_pd_mob }}px;
+}
+.u-rctxtniet-section--{{ section.id }} .u-rctxtniet-badge{
+width:{{ section.settings.badge_sz_mb }}px;
+height:{{ section.settings.badge_sz_mb }}px;
+}
+.u-rctxtniet-section--{{ section.id }} .u-rctxtniet-eyebrow{
+font-size:{{ section.settings.eyebrow_sz_mb }}px;
+}
+.u-rctxtniet-section--{{ section.id }} .u-rctxtniet-heading *{
+font-size:{{ section.settings.heading_sz_mb }}px;
+}
+.u-rctxtniet-section--{{ section.id }} .u-rctxtniet-desc{
+font-size:{{ section.settings.desc_sz_mb }}px;
+}
+.u-rctxtniet-section--{{ section.id }} .u-rctxtniet-review-star{
+width:{{ section.settings.review_star_w_mb }}px;
+}
+.u-rctxtniet-section--{{ section.id }} .u-rctxtniet-review-text{
+font-size:{{ section.settings.review_txt_sz_mb }}px;
+}
+}
+{% endstyle %}
+
+<section class="u-rctxtniet-section u-rctxtniet-section--{{ section.id }}">
+  <div class="page-width">
+    <div class="u-rctxtniet-wrap">
+      {% if section.settings.badge_img != blank %}
+        <div class="u-rctxtniet-badge">
+          <img
+            src="{{ section.settings.badge_img | image_url: width: 100 }}"
+            width="100%"
+            height="100%"
+            loading="lazy"
+            alt=""
+          >
+        </div>
+      {% endif %}
+      {% if section.settings.cnt_eyebrow != blank %}
+        <p class="u-rctxtniet-eyebrow">{{ section.settings.cnt_eyebrow }}</p>
+      {% endif %}
+      {% if section.settings.cnt_heading != blank %}
+        <div class="u-rctxtniet-heading">{{ section.settings.cnt_heading }}</div>
+      {% endif %}
+      {% if section.settings.cnt_desc != blank %}
+        <div class="u-rctxtniet-desc">{{ section.settings.cnt_desc }}</div>
+      {% endif %}
+      {% if section.settings.btn_txt != blank %}
+        <a
+          {% if section.settings.btn_link != blank %}
+            href="{{ section.settings.btn_link }}"
+          {% else %}
+            href="#"
+          {% endif %}
+          class="u-rctxtniet-btn"
+        >
+          {{ section.settings.btn_txt }}
+        </a>
+      {% endif %}
+      {% if section.settings.review_txt != blank %}
+        <div class="u-rctxtniet-review">
+          {% if section.settings.review_star_img != blank %}
+            <span class="u-rctxtniet-review-star">
+              <img
+                src="{{ section.settings.review_star_img | image_url: width: 200 }}"
+                width="100%"
+                height="auto"
+                loading="lazy"
+                alt=""
+              >
+            </span>
+          {% endif %}
+          <span class="u-rctxtniet-review-text">{{ section.settings.review_txt }}</span>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "U Risk Free RichText",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "color",
+      "id": "sec_bg_clr",
+      "label": "Section Background Color",
+      "default": "#F4EDE2"
+    },
+    {
+      "type": "range",
+      "id": "tp_pd",
+      "label": "Top Space",
+      "min": 0,
+      "max": 150,
+      "unit": "px",
+      "step": 2,
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "btm_pd",
+      "label": "Bottom Space",
+      "min": 0,
+      "max": 150,
+      "unit": "px",
+      "step": 2,
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "tp_pd_mob",
+      "label": "Top Space Mobile",
+      "min": 0,
+      "max": 150,
+      "unit": "px",
+      "step": 2,
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "btm_pd_mob",
+      "label": "Bottom Space Mobile",
+      "min": 0,
+      "max": 150,
+      "unit": "px",
+      "step": 2,
+      "default": 48
+    },
+    {
+      "type": "header",
+      "content": "Badge Settings"
+    },
+    {
+      "type": "image_picker",
+      "id": "badge_img",
+      "label": "Badge Icon"
+    },
+    {
+      "type": "color",
+      "id": "badge_bg_clr",
+      "label": "  Badge Background Color",
+      "default": "#151316"
+    },
+    {
+      "type": "range",
+      "id": "badge_sz",
+      "label": "Badge Size",
+      "min": 30,
+      "max": 150,
+      "unit": "px",
+      "step": 2,
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "badge_sz_mb",
+      "label": "Badge Size Mobile",
+      "min": 30,
+      "max": 150,
+      "unit": "px",
+      "step": 2,
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "badge_icon_pd",
+      "label": "Badge Icon Inner Space",
+      "min": 0,
+      "max": 40,
+      "unit": "px",
+      "step": 1,
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "badge_m_btm",
+      "label": "Badge Bottom Space",
+      "min": 0,
+      "max": 60,
+      "unit": "px",
+      "step": 1,
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Content Eyebrow Settings"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "cnt_eyebrow",
+      "label": "Eyebrow Text",
+      "default": "Geen risico"
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_clr",
+      "label": "  Eyebrow Color",
+      "default": "#D9A253"
+    },
+    {
+      "type": "range",
+      "id": "eyebrow_sz",
+      "label": " Eyebrow Text Size",
+      "min": 10,
+      "max": 30,
+      "unit": "px",
+      "step": 1,
+      "default": 13
+    },
+    {
+      "type": "range",
+      "id": "eyebrow_sz_mb",
+      "label": "Eyebrow Text Size Mobile",
+      "min": 10,
+      "max": 30,
+      "unit": "px",
+      "step": 1,
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "eyebrow_m_tp",
+      "label": "Eyebrow Top Space",
+      "min": 0,
+      "max": 60,
+      "unit": "px",
+      "step": 1,
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Content Heading Settings"
+    },
+    {
+      "type": "richtext",
+      "id": "cnt_heading",
+      "label": "Heading",
+      "default": "<h2>Niet goed? Geld terug.<br>Zo simpel is het.</h2>"
+    },
+    {
+      "type": "range",
+      "id": "heading_sz",
+      "label": " Heading Text Size",
+      "min": 16,
+      "max": 60,
+      "unit": "px",
+      "step": 1,
+      "default": 34
+    },
+    {
+      "type": "range",
+      "id": "heading_sz_mb",
+      "label": "Heading Text Size Mobile",
+      "min": 16,
+      "max": 50,
+      "unit": "px",
+      "step": 1,
+      "default": 24
+    },
+    {
+      "type": "color",
+      "id": "heading_clr",
+      "label": "  Heading Color",
+      "default": "#151316"
+    },
+    {
+      "type": "range",
+      "id": "heading_m_tp",
+      "label": " Heading Top Space",
+      "min": 0,
+      "max": 60,
+      "unit": "px",
+      "step": 1,
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Content Description Settings"
+    },
+    {
+      "type": "richtext",
+      "id": "cnt_desc",
+      "label": "Description",
+      "default": "<p>30 dagen om te proberen. Werkt OFF niet voor jou? Dan krijg je gewoon je geld terug — geen vragen, geen gedoe.</p>"
+    },
+    {
+      "type": "color",
+      "id": "desc_clr",
+      "label": "  Description Text Color",
+      "default": "#5B5760"
+    },
+    {
+      "type": "range",
+      "id": "desc_sz",
+      "label": " Description Text Size",
+      "min": 10,
+      "max": 40,
+      "unit": "px",
+      "step": 1,
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "desc_sz_mb",
+      "label": "Description Text Size Mobile",
+      "min": 10,
+      "max": 40,
+      "unit": "px",
+      "step": 1,
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "desc_m_tp",
+      "label": " Description Top Space",
+      "min": 0,
+      "max": 60,
+      "unit": "px",
+      "step": 1,
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "desc_max_w",
+      "label": "Description Maximum Space",
+      "min": 200,
+      "max": 900,
+      "unit": "px",
+      "step": 10,
+      "default": 520
+    },
+    {
+      "type": "header",
+      "content": "Button Settings"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "btn_txt",
+      "label": "Button Text",
+      "default": "Ontdek OFF →"
+    },
+    {
+      "type": "url",
+      "id": "btn_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "color",
+      "id": "btn_bg_clr",
+      "label": "  Button Background Color",
+      "default": "#151316"
+    },
+    {
+      "type": "color",
+      "id": "btn_txt_clr",
+      "label": "  Button Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "btn_txt_sz",
+      "label": "Button Text Size",
+      "min": 10,
+      "max": 30,
+      "unit": "px",
+      "step": 1,
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "btn_pd_tp",
+      "label": "Button Top Space",
+      "min": 0,
+      "max": 40,
+      "unit": "px",
+      "step": 1,
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "btn_pd_btm",
+      "label": "Button Bottom Space",
+      "min": 0,
+      "max": 40,
+      "unit": "px",
+      "step": 1,
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "btn_pd_lr",
+      "label": "Button Left Right Space",
+      "min": 0,
+      "max": 60,
+      "unit": "px",
+      "step": 1,
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "btn_radius",
+      "label": "Button Border Radius",
+      "min": 0,
+      "max": 60,
+      "unit": "px",
+      "step": 1,
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "btn_m_tp",
+      "label": "Button Top Space",
+      "min": 0,
+      "max": 60,
+      "unit": "px",
+      "step": 1,
+      "default": 32
+    },
+    {
+      "type": "header",
+      "content": "Review Settings"
+    },
+    {
+      "type": "image_picker",
+      "id": "review_star_img",
+      "label": "Upload 5 Star Icon"
+    },
+    {
+      "type": "range",
+      "id": "review_star_w",
+      "label": "Star Icon Size",
+      "min": 40,
+      "max": 200,
+      "unit": "px",
+      "step": 2,
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "review_star_w_mb",
+      "label": "Star Icon Size Mobile",
+      "min": 40,
+      "max": 200,
+      "unit": "px",
+      "step": 2,
+      "default": 70
+    },
+    {
+      "type": "inline_richtext",
+      "id": "review_txt",
+      "label": "Review Text",
+      "default": "4,8 gemiddeld · op voorraad, morgen in huis"
+    },
+    {
+      "type": "color",
+      "id": "review_txt_clr",
+      "label": "  Review Text Color",
+      "default": "#5B5760"
+    },
+    {
+      "type": "range",
+      "id": "review_txt_sz",
+      "label": "Review Text Size",
+      "min": 10,
+      "max": 30,
+      "unit": "px",
+      "step": 1,
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "review_txt_sz_mb",
+      "label": "Review Text Size Mobile",
+      "min": 10,
+      "max": 30,
+      "unit": "px",
+      "step": 1,
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "review_m_tp",
+      "label": "Review Top Space",
+      "min": 0,
+      "max": 60,
+      "unit": "px",
+      "step": 1,
+      "default": 20
+    }
+  ],
+  "presets": [
+    {
+      "name": "U Risk Free RichText"
+    }
+  ]
+}
+{% endschema %}
+
+{% style %}
+.u-rctxtniet-wrap{
+max-width: 720px;
+margin: 0 auto;
+padding: 0 24px;
+display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center;
+}
+.u-rctxtniet-badge{
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.u-rctxtniet-badge img{
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+.u-rctxtniet-eyebrow{
+margin: 0;
+letter-spacing: 0.05em;
+}
+.u-rctxtniet-heading *{
+margin: 0;
+line-height: 1.25;
+}
+.u-rctxtniet-desc{
+margin-left: auto;
+margin-right: auto;
+line-height: 1.5;
+}
+.u-rctxtniet-desc p{
+margin: 0;
+}
+.u-rctxtniet-btn{
+display: inline-flex;
+align-items: center;
+justify-content: center;
+text-decoration: none;
+white-space: nowrap;
+}
+.u-rctxtniet-review{
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 8px;
+flex-wrap: wrap;
+}
+.u-rctxtniet-review-star img{
+width: 100%;
+height: auto;
+display: block;
+}
+.u-rctxtniet-review-text{
+line-height: 1.4;
+}
+@media(max-width:768px){
+.u-rctxtniet-btn{
+width:100%
+}
+}
+{% endstyle %}
