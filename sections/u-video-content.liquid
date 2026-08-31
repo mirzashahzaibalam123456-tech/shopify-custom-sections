@@ -1,0 +1,991 @@
+{% style %}
+  .u-vdocont-section--{{ section.id }}{
+  background-color:{{ section.settings.sec_bg_clr }};
+  padding-top:{{ section.settings.tp_pd }}px;
+  padding-bottom:{{ section.settings.btm_pd }}px;
+  }
+  .u-vdocont-section--{{ section.id }} .u-vdocont-wrap{
+  gap:{{ section.settings.col_gap }}px;
+  }
+  .u-vdocont-section--{{ section.id }} .u-vdocont-video-wrap{
+  border-radius:{{ section.settings.vd_radius }}px;
+  padding-top:{{ section.settings.vd_height }}%;
+  background-color:{{ section.settings.vd_bg_clr }};
+  }
+  .u-vdocont-section--{{ section.id }} .u-vdocont-play-btn{
+  width:{{ section.settings.vd_play_sz }}px;
+  height:{{ section.settings.vd_play_sz }}px;
+  color:{{ section.settings.vd_play_clr }};
+  border-color:{{ section.settings.vd_play_border_clr }};
+  border-width:{{ section.settings.vd_play_border_w }}px;
+  }
+  .u-vdocont-section--{{ section.id }} .u-vdocont-author-avatar{
+  background-color:{{ section.settings.au_avatar_bg }};
+  }
+  .u-vdocont-section--{{ section.id }} .u-vdocont-author-name,
+  .u-vdocont-section--{{ section.id }} .u-vdocont-author-followers{
+  color:{{ section.settings.au_txt_clr }};
+  }
+  .u-vdocont-section--{{ section.id }} .u-vdocont-eyebrow{
+  color:{{ section.settings.cnt_eyebrow_clr }};
+  font-size:{{ section.settings.cnt_eyebrow_sz }}px;
+  }
+  .u-vdocont-section--{{ section.id }} .u-vdocont-heading{
+  font-size:{{ section.settings.cnt_heading_sz }}px;
+  color:{{ section.settings.cnt_heading_clr }};
+  margin-top:{{ section.settings.cnt_heading_m_tp }}px;
+  }
+  .u-vdocont-section--{{ section.id }} .u-vdocont-desc-wrap{
+  margin-top:{{ section.settings.cnt_desc_m_tp }}px;
+  gap:{{ section.settings.cnt_desc_gap }}px;
+  }
+  .u-vdocont-section--{{ section.id }} .u-vdocont-desc-line{
+  background-color:{{ section.settings.cnt_desc_line_clr }};
+  width:{{ section.settings.cnt_desc_line_w }}px;
+  border-radius:{{ section.settings.cnt_desc_line_radius }}px;
+  }
+  .u-vdocont-section--{{ section.id }} .u-vdocont-desc-text{
+  font-size:{{ section.settings.cnt_desc_sz }}px;
+  color:{{ section.settings.cnt_desc_clr }};
+  }
+  .u-vdocont-section--{{ section.id }} .u-vdocont-usp-list{
+  margin-top:{{ section.settings.usp_m_tp }}px;
+  gap:{{ section.settings.usp_gap }}px;
+  }
+  .u-vdocont-section--{{ section.id }} .u-vdocont-usp-icon{
+  color:{{ section.settings.usp_icon_clr }};
+  background-color:{{ section.settings.usp_icon_bg }};
+  width:{{ section.settings.usp_icon_sz }}px;
+  height:{{ section.settings.usp_icon_sz }}px;
+  }
+  .u-vdocont-section--{{ section.id }} .u-vdocont-media-overlay{
+  background-color:{{ section.settings.vd_overlay_clr }};
+  opacity:{{ section.settings.vd_overlay_opacity | divided_by: 100.0 }};
+  }
+  .u-vdocont-section--{{ section.id }} .u-vdocont-usp-text{
+  font-size:{{ section.settings.usp_txt_sz }}px;
+  color:{{ section.settings.usp_txt_clr }};
+  }
+  .u-vdocont-section--{{ section.id }} .u-vdocont-author-wrap{
+  gap:{{ section.settings.au_gap }}px;
+  }
+  .u-vdocont-section--{{ section.id }} .u-vdocont-author-avatar{
+  width:{{ section.settings.au_avatar_sz }}px;
+  height:{{ section.settings.au_avatar_sz }}px;
+  }
+  .u-vdocont-section--{{ section.id }} .u-vdocont-author-initials{
+  font-size:{{ section.settings.au_initials_sz }}px;
+  color:{{ section.settings.au_initials_clr }};
+  }
+  .u-vdocont-section--{{ section.id }} .u-vdocont-verified-badge{
+  width:{{ section.settings.au_badge_sz }}px;
+  height:{{ section.settings.au_badge_sz }}px;
+  }
+  .u-vdocont-section--{{ section.id }} .u-vdocont-usp-item{
+  gap:{{ section.settings.usp_item_gap }}px;
+  }
+  @media(max-width:768px){
+  .u-vdocont-section--{{ section.id }}{
+  padding-top:{{ section.settings.tp_pd_mob }}px;
+  padding-bottom:{{ section.settings.btm_pd_mob }}px;
+  }
+  .u-vdocont-section--{{ section.id }} .u-vdocont-heading{
+  font-size:{{ section.settings.cnt_heading_sz_mb }}px;
+  }
+  .u-vdocont-section--{{ section.id }} .u-vdocont-eyebrow{
+  font-size:{{ section.settings.cnt_eyebrow_sz_mb }}px;
+  }
+  .u-vdocont-section--{{ section.id }} .u-vdocont-desc-text{
+  font-size:{{ section.settings.cnt_desc_sz_mb }}px;
+  }
+  .u-vdocont-section--{{ section.id }} .u-vdocont-wrap{
+  gap:{{ section.settings.col_gap_mob }}px;
+  }
+  .u-vdocont-section--{{ section.id }} .u-vdocont-usp-text{
+  font-size:{{ section.settings.usp_txt_sz_mb }}px;
+  }
+  .u-vdocont-section--{{ section.id }} .u-vdocont-video-wrap{
+  padding-top:{{ section.settings.vd_height_mob }}%;
+  }
+  }
+{% endstyle %}
+
+<section class="u-vdocont-section u-vdocont-section--{{ section.id }}">
+  <div class="page-width">
+    <div class="u-vdocont-wrap">
+      <div class="u-vdocont-media-col">
+        <div class="u-vdocont-video-wrap">
+          {% if section.settings.vd_video != blank %}
+            <video
+              class="u-vdocont-video"
+              playsinline
+              preload="metadata"
+              poster="{% if section.settings.vd_placeholder != blank %}{{ section.settings.vd_placeholder | image_url: width: 800 }}{% endif %}"
+            >
+              {% for source in section.settings.vd_video.sources %}
+                {% if source.format == 'mp4' %}
+                  <source src="{{ source.url }}" type="{{ source.mime_type }}">
+                {% endif %}
+              {% endfor %}
+            </video>
+          {% elsif section.settings.vd_placeholder != blank %}
+            <div class="u-vdocont-media-overlay"></div>
+            <img
+              class="u-vdocont-placeholder"
+              src="{{ section.settings.vd_placeholder | image_url: width: 800 }}"
+              width="100%"
+              height="100%"
+              loading="lazy"
+              alt="{{ section.settings.au_name | escape }}"
+            >
+          {% endif %}
+          <div class="u-vdocont-media-overlay"></div>
+          {% if section.settings.vd_video != blank %}
+            <button type="button" class="u-vdocont-play-btn" aria-label="Play video">
+              <svg
+                class="u-vdocont-play-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="11" stroke="currentColor" stroke-width="1.2"></circle>
+                <path d="M10 8.5L16 12L10 15.5V8.5Z" fill="currentColor"></path>
+              </svg>
+            </button>
+          {% endif %}
+
+          {% if section.settings.au_name != blank or section.settings.au_avatar_img != blank %}
+            <div class="u-vdocont-author-wrap">
+              <div class="u-vdocont-author-avatar">
+                {% if section.settings.au_avatar_img != blank %}
+                  <img
+                    src="{{ section.settings.au_avatar_img | image_url: width: 80 }}"
+                    width="100%"
+                    height="100%"
+                    loading="lazy"
+                    alt="{{ section.settings.au_name | escape }}"
+                  >
+                {% elsif section.settings.au_initials != blank %}
+                  <span class="u-vdocont-author-initials">{{ section.settings.au_initials }}</span>
+                {% endif %}
+                {% if section.settings.au_verified_icon != blank %}
+                  <span class="u-vdocont-verified-badge">
+                    <img
+                      src="{{ section.settings.au_verified_icon | image_url: width: 40 }}"
+                      width="100%"
+                      height="100%"
+                      loading="lazy"
+                      alt="Verified"
+                    >
+                  </span>
+                {% endif %}
+              </div>
+              <div class="u-vdocont-author-details">
+                {% if section.settings.au_name != blank %}
+                  <p class="u-vdocont-author-name">{{ section.settings.au_name }}</p>
+                {% endif %}
+                {% if section.settings.au_followers != blank %}
+                  <p class="u-vdocont-author-followers">{{ section.settings.au_followers }}</p>
+                {% endif %}
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="u-vdocont-content-col">
+        {% if section.settings.cnt_eyebrow != blank %}
+          <p class="u-vdocont-eyebrow">{{ section.settings.cnt_eyebrow }}</p>
+        {% endif %}
+        {% if section.settings.cnt_heading != blank %}
+          <h2 class="u-vdocont-heading">{{ section.settings.cnt_heading }}</h2>
+        {% endif %}
+        {% if section.settings.cnt_desc != blank %}
+          <div class="u-vdocont-desc-wrap">
+            <div class="u-vdocont-desc-line"></div>
+            <div class="u-vdocont-desc-text">{{ section.settings.cnt_desc }}</div>
+          </div>
+        {% endif %}
+        {% if section.blocks.size > 0 %}
+          <ul class="u-vdocont-usp-list">
+            {% for block in section.blocks %}
+              {% case block.type %}
+                {% when 'usp_item' %}
+                  {% if block.settings.usp_txt != blank %}
+                    <li class="u-vdocont-usp-item" {{ block.shopify_attributes }}>
+                      <span class="u-vdocont-usp-icon" aria-hidden="true">
+                        {% if block.settings.usp_icon_img != blank %}
+                          <img
+                            src="{{ block.settings.usp_icon_img | image_url: width: 60 }}"
+                            width="100%"
+                            height="100%"
+                            loading="lazy"
+                            alt=""
+                          >
+                        {% else %}
+                          <svg
+                            viewBox="0 0 16 16"
+                            width="10"
+                            height="10"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path d="M13.5 4L6 11.5L2.5 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+                          </svg>
+                        {% endif %}
+                      </span>
+                      <span class="u-vdocont-usp-text">{{ block.settings.usp_txt }}</span>
+                    </li>
+                  {% endif %}
+              {% endcase %}
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "U Video Content",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "color",
+      "id": "sec_bg_clr",
+      "label": "Section Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "tp_pd",
+      "label": "Top Space",
+      "min": 0,
+      "max": 150,
+      "unit": "px",
+      "step": 2,
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "btm_pd",
+      "label": "Bottom Space",
+      "min": 0,
+      "max": 150,
+      "unit": "px",
+      "step": 2,
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "tp_pd_mob",
+      "label": "Top Space Mobile",
+      "min": 0,
+      "max": 150,
+      "unit": "px",
+      "step": 2,
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "btm_pd_mob",
+      "label": "Bottom Space Mobile",
+      "min": 0,
+      "max": 150,
+      "unit": "px",
+      "step": 2,
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "col_gap",
+      "label": "Space Between Video And Content",
+      "min": 0,
+      "max": 300,
+      "unit": "px",
+      "step": 5,
+      "default": 150
+    },
+    {
+      "type": "range",
+      "id": "col_gap_mob",
+      "label": "Space Between Video And Content Mobile",
+      "min": 0,
+      "max": 100,
+      "unit": "px",
+      "step": 1,
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Video Settings"
+    },
+    {
+      "type": "range",
+      "id": "vd_height",
+      "label": "Media Size",
+      "min": 50,
+      "max": 250,
+      "unit": "%",
+      "step": 2,
+      "default": 178
+    },
+    {
+      "type": "range",
+      "id": "vd_height_mob",
+      "label": "Media Size Mobile",
+      "min": 10,
+      "max": 200,
+      "unit": "%",
+      "step": 2,
+      "default": 130
+    },
+    {
+      "type": "video",
+      "id": "vd_video",
+      "label": "Video Upload"
+    },
+    {
+      "type": "image_picker",
+      "id": "vd_placeholder",
+      "label": "Placeholder Image"
+    },
+    {
+      "type": "color",
+      "id": "vd_bg_clr",
+      "label": "  Video Box Background Color",
+      "default": "#171523"
+    },
+    {
+      "type": "range",
+      "id": "vd_radius",
+      "label": "Media Border Radius",
+      "min": 0,
+      "max": 60,
+      "unit": "px",
+      "step": 1,
+      "default": 24
+    },
+    {
+      "type": "color",
+      "id": "vd_play_clr",
+      "label": "  Play Button Color",
+      "default": "#D9A253"
+    },
+    {
+      "type": "range",
+      "id": "vd_play_sz",
+      "label": "Play Button Size",
+      "min": 30,
+      "max": 150,
+      "unit": "px",
+      "step": 2,
+      "default": 64
+    },
+    {
+      "type": "color",
+      "id": "vd_overlay_clr",
+      "label": "  Overlay Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "vd_overlay_opacity",
+      "label": "Overlay Opacity",
+      "min": 0,
+      "max": 100,
+      "unit": "%",
+      "step": 1,
+      "default": 40
+    },
+    {
+      "type": "color",
+      "id": "vd_play_border_clr",
+      "label": "  Play Button Border Color",
+      "default": "#D9A253"
+    },
+    {
+      "type": "range",
+      "id": "vd_play_border_w",
+      "label": "Play Button Border Size",
+      "min": 1,
+      "max": 10,
+      "unit": "px",
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "header",
+      "content": "Author Settings"
+    },
+    {
+      "type": "image_picker",
+      "id": "au_avatar_img",
+      "label": "Uplaod Author Avatar Image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "au_initials",
+      "label": "Fallback Author Initials",
+      "default": "EB"
+    },
+    {
+      "type": "color",
+      "id": "au_avatar_bg",
+      "label": "  Avatar Background Color",
+      "default": "#D9A253"
+    },
+    {
+      "type": "image_picker",
+      "id": "au_verified_icon",
+      "label": "Upload Verified Badge Icon"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "au_name",
+      "label": "Author Name",
+      "default": "Esther Boezaard"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "au_followers",
+      "label": "Follower Text",
+      "default": "37,2K volgers"
+    },
+    {
+      "type": "color",
+      "id": "au_txt_clr",
+      "label": "  Author Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "au_gap",
+      "label": "Space Between Avatar And Text",
+      "min": 0,
+      "max": 40,
+      "unit": "px",
+      "step": 1,
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "au_avatar_sz",
+      "label": "Avatar Size",
+      "min": 20,
+      "max": 100,
+      "unit": "px",
+      "step": 1,
+      "default": 42
+    },
+    {
+      "type": "range",
+      "id": "au_initials_sz",
+      "label": "Initials Text Size",
+      "min": 8,
+      "max": 30,
+      "unit": "px",
+      "step": 1,
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "au_initials_clr",
+      "label": "  Initials Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "au_badge_sz",
+      "label": "Verified Badge Size",
+      "min": 8,
+      "max": 30,
+      "unit": "px",
+      "step": 1,
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Content Eyebrow Settings"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "cnt_eyebrow",
+      "label": "Eyebrow Text",
+      "default": "Wat gebruikers zeggen"
+    },
+    {
+      "type": "color",
+      "id": "cnt_eyebrow_clr",
+      "label": "  Eyebrow Color",
+      "default": "#D9A253"
+    },
+    {
+      "type": "range",
+      "id": "cnt_eyebrow_sz",
+      "label": " Eyebrow Text Size",
+      "min": 10,
+      "max": 30,
+      "unit": "px",
+      "step": 1,
+      "default": 13
+    },
+    {
+      "type": "range",
+      "id": "cnt_eyebrow_sz_mb",
+      "label": "Eyebrow Text Size Mobile",
+      "min": 10,
+      "max": 30,
+      "unit": "px",
+      "step": 1,
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Content Heading Settings"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "cnt_heading",
+      "label": "Heading",
+      "default": "Dit zegt Esther Boezaard over OFF"
+    },
+    {
+      "type": "range",
+      "id": "cnt_heading_sz",
+      "label": " Heading Text Size",
+      "min": 16,
+      "max": 60,
+      "unit": "px",
+      "step": 1,
+      "default": 34
+    },
+    {
+      "type": "range",
+      "id": "cnt_heading_sz_mb",
+      "label": "Heading Text Size Mobile",
+      "min": 16,
+      "max": 50,
+      "unit": "px",
+      "step": 1,
+      "default": 24
+    },
+    {
+      "type": "color",
+      "id": "cnt_heading_clr",
+      "label": "  Heading Color",
+      "default": "#151316"
+    },
+    {
+      "type": "range",
+      "id": "cnt_heading_m_tp",
+      "label": " Heading Top Space",
+      "min": 0,
+      "max": 60,
+      "unit": "px",
+      "step": 1,
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Content Description Settings"
+    },
+    {
+      "type": "richtext",
+      "id": "cnt_desc",
+      "label": "Description",
+      "default": "<p>\"Als je continu aan het piekeren bent en daardoor niet kan slapen — waar ik zelf wel eens last van heb — dan geeft dit echt een mentale off-switch.\"</p>"
+    },
+    {
+      "type": "color",
+      "id": "cnt_desc_clr",
+      "label": "  Description Text Color",
+      "default": "#151316"
+    },
+    {
+      "type": "range",
+      "id": "cnt_desc_sz",
+      "label": " Description Text Size",
+      "min": 10,
+      "max": 40,
+      "unit": "px",
+      "step": 1,
+      "default": 19
+    },
+    {
+      "type": "range",
+      "id": "cnt_desc_sz_mb",
+      "label": "Description Text Size Mobile",
+      "min": 10,
+      "max": 40,
+      "unit": "px",
+      "step": 1,
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "cnt_desc_line_clr",
+      "label": "  Description Left Line Color",
+      "default": "#D9A253"
+    },
+    {
+      "type": "range",
+      "id": "cnt_desc_m_tp",
+      "label": " Description Top Space",
+      "min": 0,
+      "max": 60,
+      "unit": "px",
+      "step": 1,
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "cnt_desc_gap",
+      "label": "Space Between Line And Text",
+      "min": 0,
+      "max": 40,
+      "unit": "px",
+      "step": 1,
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "cnt_desc_line_w",
+      "label": "Left Line Size",
+      "min": 1,
+      "max": 10,
+      "unit": "px",
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "cnt_desc_line_radius",
+      "label": "Left Line Corner Radius",
+      "min": 0,
+      "max": 10,
+      "unit": "px",
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "header",
+      "content": "USP List Settings"
+    },
+    {
+      "type": "range",
+      "id": "usp_icon_sz",
+      "label": "Icon Size",
+      "min": 10,
+      "max": 60,
+      "unit": "px",
+      "step": 1,
+      "default": 20
+    },
+    {
+      "type": "color",
+      "id": "usp_icon_clr",
+      "label": "  Checkmark Color",
+      "default": "#D9A253"
+    },
+    {
+      "type": "color",
+      "id": "usp_icon_bg",
+      "label": "  Checkmark Background Color",
+      "default": "#F4E7D4"
+    },
+    {
+      "type": "color",
+      "id": "usp_txt_clr",
+      "label": "  USP Text Color",
+      "default": "#151316"
+    },
+    {
+      "type": "range",
+      "id": "usp_txt_sz",
+      "label": " USP Text Size",
+      "min": 10,
+      "max": 30,
+      "unit": "px",
+      "step": 1,
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "usp_txt_sz_mb",
+      "label": "USP Text Size Mobile",
+      "min": 10,
+      "max": 30,
+      "unit": "px",
+      "step": 1,
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "usp_gap",
+      "label": "Space Between USP Items",
+      "min": 0,
+      "max": 40,
+      "unit": "px",
+      "step": 1,
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "usp_m_tp",
+      "label": "USP List Top Space",
+      "min": 0,
+      "max": 60,
+      "unit": "px",
+      "step": 1,
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "usp_item_gap",
+      "label": "Space Between Icon And Text",
+      "min": 0,
+      "max": 40,
+      "unit": "px",
+      "step": 1,
+      "default": 10
+    }
+  ],
+  "blocks": [
+    {
+      "type": "usp_item",
+      "name": " USP Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "usp_icon_img",
+          "label": "Upload USP Icon "
+        },
+        {
+          "type": "inline_richtext",
+          "id": "usp_txt",
+          "label": "USP Text",
+          "default": "Helpt tegen piekeren voor het slapengaan"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "U Video Content",
+      "blocks": [{ "type": "usp_item" }, { "type": "usp_item" }, { "type": "usp_item" }]
+    }
+  ]
+}
+{% endschema %}
+
+<script>
+  (function () {
+    function toggleVideo(e) {
+      var video = e.target.closest('.u-vdocont-video');
+      if (video) {
+        video.paused ? video.play() : video.pause();
+        return;
+      }
+      var btn = e.target.closest('.u-vdocont-play-btn');
+      if (!btn) return;
+      var wrap = btn.closest('.u-vdocont-video-wrap');
+      if (!wrap) return;
+      var vid = wrap.querySelector('.u-vdocont-video');
+      if (vid) vid.play();
+    }
+
+    function setPlaying(isPlaying) {
+      return function (e) {
+        if (!e.target.classList || !e.target.classList.contains('u-vdocont-video')) return;
+        var wrap = e.target.closest('.u-vdocont-video-wrap');
+        if (wrap) wrap.classList.toggle('u-vdocont-is-playing', isPlaying);
+      };
+    }
+
+    document.addEventListener('click', toggleVideo);
+    document.addEventListener('play', setPlaying(true), true);
+    document.addEventListener('pause', setPlaying(false), true);
+    document.addEventListener('ended', setPlaying(false), true);
+  })();
+</script>
+
+{% style %}
+  .u-vdocont-wrap{
+  display: flex;
+  align-items: center;
+  }
+  .u-vdocont-media-col{
+  flex: 0 0 360px;
+  max-width: 360px;
+  }
+  .u-vdocont-video-wrap{
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  }
+  .u-vdocont-video,
+  .u-vdocont-placeholder{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  }
+  .u-vdocont-play-btn{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-style: solid;
+  border-radius: 50%;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+  }
+  .u-vdocont-play-icon{
+  width: 80%;
+  height: 80%;
+  }
+  .u-vdocont-video-wrap.u-vdocont-is-playing .u-vdocont-play-btn{
+  opacity: 0;
+  pointer-events: none;
+  }
+  .u-vdocont-play-icon circle{
+  stroke: none;
+  }
+  .u-vdocont-author-wrap{
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  display: flex;
+  align-items: center;
+  z-index: 2;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  }
+  .u-vdocont-video-wrap.u-vdocont-is-playing .u-vdocont-author-wrap{
+  opacity: 0;
+  transform: translateY(6px);
+  pointer-events: none;
+  }
+  .u-vdocont-author-avatar{
+  position: relative;
+  border-radius: 50%;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  }
+  .u-vdocont-author-avatar img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius:50%;
+  }
+  .u-vdocont-verified-badge{
+  position: absolute;
+  bottom: 2px;
+  right: -2px;
+  border-radius: 50%;
+  overflow: visible;
+  }
+  .u-vdocont-verified-badge img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  }
+  .u-vdocont-author-name{
+  margin: 0;
+  line-height: 1.3;
+  }
+  .u-vdocont-author-followers{
+  margin: 0;
+  line-height: 1.3;
+  opacity: 0.8;
+  }
+  .u-vdocont-content-col{
+  flex: 1;
+  }
+  .u-vdocont-media-overlay{
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  display: block !important;
+  }
+  .u-vdocont-eyebrow{
+  margin: 0;
+  letter-spacing: 0.05em;
+  }
+  .u-vdocont-heading{
+  margin: 0;
+  line-height: 1.25;
+  }
+  .u-vdocont-desc-wrap{
+  display: flex;
+  align-items: stretch;
+  }
+  .u-vdocont-desc-line{
+  flex: 0 0 auto;
+  display:block !important;
+  }
+  .u-vdocont-desc-text{
+  margin: 0;
+  line-height: 1.5;
+  }
+  .u-vdocont-desc-text p{
+  margin: 0;
+  }
+  .u-vdocont-usp-list{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  }
+  .u-vdocont-usp-item{
+  display: flex;
+  align-items: center;
+  }
+  .u-vdocont-usp-icon{
+  flex-shrink: 0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  }
+  .u-vdocont-usp-icon img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  padding:5px;
+  }
+  .u-vdocont-usp-text{
+  line-height: 1.4;
+  }
+  @media(max-width:768px){
+  .u-vdocont-wrap{
+  flex-direction: column;
+  align-items: stretch;
+  }
+  .u-vdocont-media-col{
+  flex: none;
+  max-width: 100%;
+  padding:0 45px;
+  }
+  }
+{% endstyle %}
